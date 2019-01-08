@@ -1,3 +1,8 @@
+#! /usr/bin/env python
+# -*- coding: utf-8 -*-
+
+from random import randint
+
 def get_largest_number(numbers):
     """Gets the largest number from the list received.
 
@@ -6,7 +11,13 @@ def get_largest_number(numbers):
     :param numbers: List containing corresponding numbers
     :return: Largest number found
     """
-    pass  # <--- remove this `pass` and put your code here
+    lista_numeros = []
+    for i in range(0, len(numbers)):
+        lista_numeros.append(numbers[i])
+        print "{}.-{}".format(i, lista_numeros[i])
+
+    lista_numeros.sort()
+    return lista_numeros[len(numbers)-1]
 
 
 def get_smallest_number(numbers):
@@ -17,7 +28,13 @@ def get_smallest_number(numbers):
     :param numbers: List containing corresponding numbers
     :return: Smallest number found
     """
-    pass  # <--- remove this `pass` and put your code here
+    lista_numeros = []
+    for i in range(0, len(numbers)):
+        lista_numeros.append(numbers[i])
+        print "{}.-{}".format(i, lista_numeros[i])
+
+    lista_numeros.sort()
+    return lista_numeros[0]
 
 
 def get_even_numbers(numbers):
@@ -143,4 +160,12 @@ def join_strings(strings):
 
 if __name__ == '__main__':
     # if you need to execute custom code to check results, do it here!
-    pass
+    #pass
+    numeros_lista = []
+    for i in range(0, 8):
+        numeros_lista.append(randint(1, 1000))
+
+    print
+    print "Lista generada es:\n{}\n".format(numeros_lista)
+    print ".-El numero mas grande es: {}\n".format(get_largest_number(numeros_lista))
+    print ".-El número más pequeño es: {}\n".format(get_smallest_number(numeros_lista))
