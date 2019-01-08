@@ -11,10 +11,11 @@ def get_largest_number(numbers):
     :param numbers: List containing corresponding numbers
     :return: Largest number found
     """
+
     lista_numeros = []
     for i in range(0, len(numbers)):
         lista_numeros.append(numbers[i])
-        print "{}.-{}".format(i, lista_numeros[i])
+        #print "{}.-{}".format(i, lista_numeros[i])
 
     lista_numeros.sort()
     return lista_numeros[len(numbers)-1]
@@ -30,8 +31,12 @@ def get_smallest_number(numbers):
     """
     lista_numeros = []
     for i in range(0, len(numbers)):
-        lista_numeros.append(numbers[i])
-        print "{}.-{}".format(i, lista_numeros[i])
+       lista_numeros.append(numbers[i])
+
+    x = 0
+    for element in numbers:
+        print "{}.-{}".format(x, numbers[x])
+        x += 1
 
     lista_numeros.sort()
     return lista_numeros[0]
@@ -45,7 +50,25 @@ def get_even_numbers(numbers):
     :param numbers: - List containing corresponding numbers
     :return: New list containing all even numbers found
     """
-    pass  # <--- remove this `pass` and put your code here
+    #pass  # <--- remove this `pass` and put your code here
+    lista_numeros = []
+    los_numeros_pares = []
+    numero_intermedio = None
+
+    for i in range(0, len(numbers)):
+        lista_numeros.append(numbers[i])
+
+    lista_numeros.sort()
+
+    for element in lista_numeros:
+        numero_intermedio = element % 2
+        print
+        print "{} % 2 = {}.".format(element, numero_intermedio)
+        if element%2 == 0:
+            los_numeros_pares.append(element)
+    print
+    print "Los numeros pares son: {}".format(los_numeros_pares)
+    return los_numeros_pares
 
 
 def filter_even_numbers(numbers):
@@ -161,11 +184,14 @@ def join_strings(strings):
 if __name__ == '__main__':
     # if you need to execute custom code to check results, do it here!
     #pass
-    numeros_lista = []
-    for i in range(0, 8):
-        numeros_lista.append(randint(1, 1000))
+    numeros_lista = [1, 15, 27, -3, -5, -20]
+    #for i in range(0, 8):
+    #    numeros_lista.append(randint(1, 1000))
 
     print
     print "Lista generada es:\n{}\n".format(numeros_lista)
-    print ".-El numero mas grande es: {}\n".format(get_largest_number(numeros_lista))
-    print ".-El número más pequeño es: {}\n".format(get_smallest_number(numeros_lista))
+    print ".-El numero mas grande es: {}".format(get_largest_number(numeros_lista))
+    print ".-El número más pequeño es: {}".format(get_smallest_number(numeros_lista))
+    print ".-Los numeros pares son: {}".format(get_even_numbers(numeros_lista))
+
+
