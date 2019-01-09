@@ -33,10 +33,10 @@ def get_smallest_number(numbers):
     for i in range(0, len(numbers)):
        lista_numeros.append(numbers[i])
 
-    x = 0
-    for element in numbers:
-        print "{}.-{}".format(x, numbers[x])
-        x += 1
+    # x = 0
+    # for element in numbers:
+    #     print "{}.-{}".format(x, numbers[x])
+    #     x += 1
 
     lista_numeros.sort()
     return lista_numeros[0]
@@ -62,12 +62,8 @@ def get_even_numbers(numbers):
 
     for element in lista_numeros:
         numero_intermedio = element % 2
-        print
-        print "{} % 2 = {}.".format(element, numero_intermedio)
-        if element%2 == 0:
+        if numero_intermedio == 0:
             los_numeros_pares.append(element)
-    print
-    print "Los numeros pares son: {}".format(los_numeros_pares)
     return los_numeros_pares
 
 
@@ -79,7 +75,16 @@ def filter_even_numbers(numbers):
     :param numbers: List containing corresponding numbers
     :return: Nothing
     """
-    pass  # <--- remove this `pass` and put your code here
+    lista_numeros = []
+
+    for element in numbers:
+        lista_numeros.append(element)
+
+    for element in lista_numeros:
+        if not element%2 == 0:
+            numbers.pop(numbers.index(element))
+
+    #numbers.sort()
 
 
 def draw_solid_rectangle(x, y):
@@ -184,14 +189,14 @@ def join_strings(strings):
 if __name__ == '__main__':
     # if you need to execute custom code to check results, do it here!
     #pass
-    numeros_lista = [1, 15, 27, -3, -5, -20]
-    #for i in range(0, 8):
-    #    numeros_lista.append(randint(1, 1000))
+    numeros_lista = []
+    for i in range(0, 8):
+        numeros_lista.append(randint(1, 1000))
 
     print
     print "Lista generada es:\n{}\n".format(numeros_lista)
     print ".-El numero mas grande es: {}".format(get_largest_number(numeros_lista))
     print ".-El número más pequeño es: {}".format(get_smallest_number(numeros_lista))
     print ".-Los numeros pares son: {}".format(get_even_numbers(numeros_lista))
-
+    filter_even_numbers(numeros_lista)
 
