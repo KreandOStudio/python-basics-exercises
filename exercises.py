@@ -94,7 +94,14 @@ def draw_solid_rectangle(x, y):
     :param y: Number of rows (height)
     :return: String containing corresponding solid rectangle
     """
-    pass  # <--- remove this `pass` and put your code here
+    dibujo = ""
+    for a in range(y):
+        for b in range(x):
+            dibujo = dibujo + "*"
+            if b==x-1:
+                if not a == y-1:
+                    dibujo = dibujo + "\n"
+    return dibujo
 
 
 def draw_rectangle_borders(x, y):
@@ -199,4 +206,8 @@ if __name__ == '__main__':
     print ".-El número más pequeño es: {}".format(get_smallest_number(numeros_lista))
     print ".-Los numeros pares son: {}".format(get_even_numbers(numeros_lista))
     filter_even_numbers(numeros_lista)
+    print ".-Imprimimos un recuadro solido con '*': \n{}".format(draw_solid_rectangle(
+        randint(1, 10),
+        randint(1, 10)
+    ))
 
