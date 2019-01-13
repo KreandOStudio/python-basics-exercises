@@ -112,9 +112,42 @@ def draw_rectangle_borders(x, y):
     :return: String containing corresponding rectangle border
     """
     dibujo = ""
-    #for a in range(y):
-    #    for b in range(x):
-    #        if a
+    espacio = " "
+    asterisco = "*"
+    salto_linea= "\n"
+    for a in range(y):
+        for b in range(x):
+            if a == 1:
+                dibujo = dibujo + asterisco
+            if a == y:
+                dibujo = dibujo + asterisco
+            if b == 1:
+                dibujo = dibujo + asterisco
+            if b == x:
+                dibujo = dibujo + asterisco
+
+            dibujo = dibujo + espacio
+
+        dibujo= dibujo + salto_linea
+    return dibujo
+
+
+def pinto_monas():
+    # --- Parte 3 ---
+    # Pedimos el lado
+    lado = int(raw_input("Lado: "))
+
+    # Definimos una variable para dibujar los espacios
+    espacios = lado - 1
+    for i in range(lado, 3 * lado, 2):
+        print " " * espacios + "*" * i
+        espacios -= 1
+
+    espacios = 1
+    for i in range(3 * lado - 4, lado - 2, -2):
+        print " " * espacios + "*" * i
+        espacios += 1
+
 
 def draw_pyramid(height):
     """Generates a string with a pyramid made of * symbols and `height` rows.
@@ -212,4 +245,8 @@ if __name__ == '__main__':
         randint(1, 10),
         randint(1, 10)
     ))
-
+    print "Imprimimos un recuadro solo su borde: \n{}".format(draw_rectangle_borders(
+        randint(1, 10),
+        randint(1, 10)
+    ))
+    print "Pinto monas: {}".format(pinto_monas())
