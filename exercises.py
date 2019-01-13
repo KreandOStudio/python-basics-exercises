@@ -115,18 +115,14 @@ def draw_rectangle_borders(x, y):
     espacio = " "
     asterisco = "*"
     salto_linea= "\n"
-    for a in range(y):
-        for b in range(x):
-            if a == 1:
+    for a in range(1, y+1):
+        for b in range(1, x+1):
+            if a==1 or a==y:
                 dibujo = dibujo + asterisco
-            if a == y:
+            elif b==1 or b==x:
                 dibujo = dibujo + asterisco
-            if b == 1:
-                dibujo = dibujo + asterisco
-            if b == x:
-                dibujo = dibujo + asterisco
-
-            dibujo = dibujo + espacio
+            else:
+                dibujo = dibujo + espacio
 
         dibujo= dibujo + salto_linea
     return dibujo
@@ -249,4 +245,4 @@ if __name__ == '__main__':
         randint(1, 10),
         randint(1, 10)
     ))
-    print "Pinto monas: {}".format(pinto_monas())
+    #print "Pinto monas: {}".format(pinto_monas())
