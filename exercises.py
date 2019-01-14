@@ -124,25 +124,9 @@ def draw_rectangle_borders(x, y):
             else:
                 dibujo = dibujo + espacio
 
-        dibujo= dibujo + salto_linea
+        if not a == y:
+            dibujo= dibujo + salto_linea
     return dibujo
-
-
-def pinto_monas():
-    # --- Parte 3 ---
-    # Pedimos el lado
-    lado = int(raw_input("Lado: "))
-
-    # Definimos una variable para dibujar los espacios
-    espacios = lado - 1
-    for i in range(lado, 3 * lado, 2):
-        print " " * espacios + "*" * i
-        espacios -= 1
-
-    espacios = 1
-    for i in range(3 * lado - 4, lado - 2, -2):
-        print " " * espacios + "*" * i
-        espacios += 1
 
 
 def draw_pyramid(height):
@@ -151,7 +135,21 @@ def draw_pyramid(height):
     :param height: Number of rows (height)
     :return: String containing corresponding pyramid
     """
-    pass  # <--- remove this `pass` and put your code here
+    dibujo_triangulo = ""
+    espacio = ""
+    asterisco = ""
+    salto_linea = "\n"
+
+    for numero_linea in range(height):
+        espacio = height - numero_linea - 1
+        asterisco = 1 + numero_linea * 2
+        dibujo_triangulo = dibujo_triangulo + " " * espacio
+        dibujo_triangulo = dibujo_triangulo + "*" * asterisco
+
+        if not numero_linea == height-1:
+            dibujo_triangulo = dibujo_triangulo + salto_linea
+
+    return dibujo_triangulo
 
 
 def draw_inverted_pyramid(height):
@@ -224,6 +222,23 @@ def join_strings(strings):
     pass  # <--- remove this `pass` and put your code here
 
 
+def pinto_monas():
+    # --- Parte 3 ---
+    # Pedimos el lado
+    lado = int(raw_input("Lado: "))
+
+    # Definimos una variable para dibujar los espacios
+    espacios = lado - 1
+    for i in range(lado, 3 * lado, 2):
+        print " " * espacios + "*" * i
+        espacios -= 1
+
+    espacios = 1
+    for i in range(3 * lado - 4, lado - 2, -2):
+        print " " * espacios + "*" * i
+        espacios += 1
+
+
 if __name__ == '__main__':
     # if you need to execute custom code to check results, do it here!
     #pass
@@ -245,4 +260,6 @@ if __name__ == '__main__':
         randint(1, 10),
         randint(1, 10)
     ))
+    numero = randint(1, 10)
+    print "Imprimimos un triangulo con '*' de {} lineas: \n{}".format(numero, draw_pyramid(numero))
     #print "Pinto monas: {}".format(pinto_monas())
