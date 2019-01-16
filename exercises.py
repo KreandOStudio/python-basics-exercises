@@ -117,9 +117,9 @@ def draw_rectangle_borders(x, y):
     salto_linea= "\n"
     for a in range(1, y+1):
         for b in range(1, x+1):
-            if a==1 or a==y:
+            if a == 1 or a == y:
                 dibujo = dibujo + asterisco
-            elif b==1 or b==x:
+            elif b == 1 or b == x:
                 dibujo = dibujo + asterisco
             else:
                 dibujo = dibujo + espacio
@@ -158,7 +158,18 @@ def draw_inverted_pyramid(height):
     :param height: Number of rows (height)
     :return: String containing corresponding inverted pyramid
     """
-    pass  # <--- remove this `pass` and put your code here
+    dibujo_triangulo_invertido = ""
+    espacio = " "
+    asterisco = "*"
+    for linea in range(height):
+        asterisco = height * 2 - linea * 2 -1
+        espacio = linea + 1
+        dibujo_triangulo_invertido = dibujo_triangulo_invertido + " " * linea
+        dibujo_triangulo_invertido = dibujo_triangulo_invertido + "*" * asterisco
+
+        if not linea == height-1:
+            dibujo_triangulo_invertido = dibujo_triangulo_invertido + "\n"
+    return dibujo_triangulo_invertido
 
 
 def chars_counter(string):
@@ -262,4 +273,5 @@ if __name__ == '__main__':
     ))
     numero = randint(1, 10)
     print "Imprimimos un triangulo con '*' de {} lineas: \n{}".format(numero, draw_pyramid(numero))
+    print "Imprimimos un triangulo invertido con '*' de {} líneas: \n{}".format(numero, draw_inverted_pyramid(numero))
     #print "Pinto monas: {}".format(pinto_monas())
