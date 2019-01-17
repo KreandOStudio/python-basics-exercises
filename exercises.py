@@ -15,7 +15,6 @@ def get_largest_number(numbers):
     lista_numeros = []
     for i in range(0, len(numbers)):
         lista_numeros.append(numbers[i])
-        #print "{}.-{}".format(i, lista_numeros[i])
 
     lista_numeros.sort()
     return lista_numeros[len(numbers)-1]
@@ -159,8 +158,6 @@ def draw_inverted_pyramid(height):
     :return: String containing corresponding inverted pyramid
     """
     dibujo_triangulo_invertido = ""
-    espacio = " "
-    asterisco = "*"
     for linea in range(height):
         asterisco = height * 2 - linea * 2 -1
         espacio = linea + 1
@@ -182,7 +179,16 @@ def chars_counter(string):
     :param string: String to count chars
     :return: Dictionary with char and counter key-value pairs
     """
-    pass  # <--- remove this `pass` and put your code here
+    lista_del_texto = []
+    contador = {}
+    for i in range(len(string)):
+        lista_del_texto.append(string[i])
+
+    for x in range(len(string)):
+        letra = string[x]
+        contador.setdefault(letra, lista_del_texto.count(letra))
+
+    return contador
 
 
 def sort_list_ascending(elements):
@@ -193,8 +199,14 @@ def sort_list_ascending(elements):
     :param elements: List of elements to be sorted
     :return: New list with elements sorted
     """
-    pass  # <--- remove this `pass` and put your code here
 
+    lista = []
+
+    for elementos in elements:
+        lista.append(elementos)
+    lista.sort()
+
+    return lista
 
 def check_date(day, month, year):
     """Checks if received date is valid or not.
@@ -208,7 +220,29 @@ def check_date(day, month, year):
     :param year: Year number
     :return: True if date is valid, False otherwise
     """
-    pass  # <--- remove this `pass` and put your code here
+    es_year_bisiesto = False
+    fecha_correcta = False
+
+    if year > 0:
+        if (year % 4 == 0) and (year % 100 != 0) or (year % 400 == 0):
+            es_year_bisiesto = True
+
+        if (month == 1) or (month == 3) or (month == 5) or (month == 7) or (month == 8) or (month == 10) or (month == 12):
+            if (day > 0) and (day <= 31):
+                fecha_correcta = True
+        elif (month == 4) or (month == 6) or (month ==  9) or (month == 11):
+            if (day > 0) and (day <= 30):
+                fecha_correcta = True
+        elif month == 2:
+            if es_year_bisiesto:
+                if (day > 0) and (day <= 29):
+                    fecha_correcta = True
+            else:
+                if (day > 0) and (day <= 28):
+                    fecha_correcta = True
+
+
+    return fecha_correcta
 
 
 def check_palindrome(string):
@@ -219,7 +253,15 @@ def check_palindrome(string):
     :param string: String to be checked
     :return: True if string is palindrome, False otherwise
     """
-    pass  # <--- remove this `pass` and put your code here
+    ordenado = []
+    reves = []
+
+    for i in range(len(string)):
+        ordenado.append(string[i].upper())
+        reves.append(string[i].upper())
+    reves.reverse()
+    texto1 = reves.__str__()
+    print texto1
 
 
 def join_strings(strings):
@@ -254,8 +296,10 @@ if __name__ == '__main__':
     # if you need to execute custom code to check results, do it here!
     #pass
     numeros_lista = []
+    num = []
     for i in range(0, 8):
         numeros_lista.append(randint(1, 1000))
+        num.append(randint(1, 100))
 
     print
     print "Lista generada es:\n{}\n".format(numeros_lista)
@@ -275,3 +319,12 @@ if __name__ == '__main__':
     print "Imprimimos un triangulo con '*' de {} lineas: \n{}".format(numero, draw_pyramid(numero))
     print "Imprimimos un triangulo invertido con '*' de {} líneas: \n{}".format(numero, draw_inverted_pyramid(numero))
     #print "Pinto monas: {}".format(pinto_monas())
+    frase = raw_input("Introduzca una frase: ")
+    print "Imprimimos el conteo de letras de la frase introducida: \n{}".format(chars_counter(frase))
+    print "Ordenamosla lista generada anteriormente {}: \n{}".format(num, sort_list_ascending(num))
+    print "Introduzca una fecha: "
+    dia = int(raw_input(".-Introduzca el día: "))
+    mes = int(raw_input(".-Introduzca el mes: "))
+    year = int(raw_input(".-Introduzca el año: "))
+    print "¿Es correcta la fecha?: {}".format(check_date(dia, mes, year))
+    print "Palindromo: {}".format(check_palindrome("cateto"))
